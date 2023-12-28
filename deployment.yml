@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mlops-pipeline-for-llm-testing-deployment
+  labels:
+    app: mlops-pipeline-for-llm-testing
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mlops-pipeline-for-llm-testing
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+  template:
+    metadata:
+      labels:
+        app: mlops-pipeline-for-llm-testing
+    spec:
+      containers:
+      - name: mlops-pipeline-for-llm-testing
+        image: kaiken26/projet-devops:mlops-pipeline-for-llm-testing-2.0
+        ports:
+        - containerPort: 8501

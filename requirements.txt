@@ -1,0 +1,10 @@
+langchain
+huggingface_hub
+streamlit
+python-dotenv
+pytest
+tensorflow[and-cuda]
+scikit-learn
+langid
+nltk
+pandas

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mlops-pipeline-for-llm-testing-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: mlops-pipeline-for-llm-testing
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8501

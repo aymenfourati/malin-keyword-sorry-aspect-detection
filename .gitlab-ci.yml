@@ -1,0 +1,36 @@
+stages:
+  - test
+  - build
+  - deploy
+
+
+run_tests:
+  stage: test
+  image: tensorflow/tensorflow:latest
+  script:
+   - pip install -r requirements.txt
+   - pytest test.py 
+build_image:
+  stage: build
+  image: docker:20.10.16
+  services:
+   - docker:20.10.16-dind
+  variables:
+   DOCKER_TLS_CERTDIR: "/certs"
+  script:
+   - export TMPDIR=$HOME/tmp
+   - docker build -t kaiken26/projet-devops:mlops-pipeline-for-llm-testing-2.0 .
+   - docker login -u $DOCKER_USER -p $DOCKER_PASS
+   - docker push kaiken26/projet-devops:mlops-pipeline-for-llm-testing-2.0
+
+deploy_kub:
+  stage: deploy
+  image:
+    name: bitnami/kubectl:latest
+    entrypoint: ['']
+  script:
+   - export KUBECONFIG=kubeconfig.txt
+   - kubectl apply -f deployment.yml
+   - kubectl apply -f service.yml
+   - kubectl set image deployment/mlops-pipeline-for-llm-testing-deployment mlops-pipeline-for-llm-testing=kaiken26/projet-devops:mlops-pipeline-for-llm-testing-2.0
+   - kubectl events
