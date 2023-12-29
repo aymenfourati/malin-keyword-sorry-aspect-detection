@@ -38,6 +38,6 @@ The project uses the Streamlit framework, which allows for interaction with the 
 ## Exemples
 
 
-![](exemple 1.png)
-![](exemple 2.png)
-![](exemple 3.png)
+![](exemple1.png)
+![](exemple2.png)
+![](exemple3.png)
