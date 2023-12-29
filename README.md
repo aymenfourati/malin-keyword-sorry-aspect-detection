@@ -1,10 +1,9 @@
 # Malin v0.2
 
 
-
 This project aims to provide an interactive web application that generates responses to customer comments, detects keywords, and identifies sorry aspects in the generated responses.
 
-link to app : http://20.123.99.158:8080
+link to app : http://20.199.80.5
 
 ![](app.png)
 
@@ -12,6 +11,7 @@ link to app : http://20.123.99.158:8080
 
 - [Installation](#installation)
 - [Usage](#usage)
+- [Exemples](#exemples)
 
 
 ## Installation
@@ -35,3 +35,9 @@ The application consists of three modules:
 
 The project uses the Streamlit framework, which allows for interaction with the user through a web interface. 
 
+## Exemples
+
+
+![](exemple 1.png)
+![](exemple 2.png)
+![](exemple 3.png)
